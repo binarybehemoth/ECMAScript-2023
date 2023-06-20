@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html><head></head><body><script>
+   let a = 1;
+   document.body.innerHTML += a;
+   {let a = 2;
+    document.body.innerHTML += a;
+    let b = 3;
+   }
+   document.body.innerHTML += a;
+   // document.body.innerHTML += b; //error: b is not defined
+</script></body></html>

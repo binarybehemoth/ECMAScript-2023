@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html><head>
+   <script>
+      // debugger;    // uncomment this to invoke debugger
+      var A = 10;     // literal 10 is pre-initialized to A
+      var A = 3 * A;  // an expression; old value is replaced
+      var B;             <!-- to be received during runtime
+      function assignC(){ 
+           B=document.getElementById("myTextbox").value;
+	  }
+      var C = assignC;
+      alert(1);
+      var D = new Boolean(true), // an object
+      物件 = {a:10};   // an object literal
+   </script>
+   <script src="1.js" defer></script>
+</head>
+<body>
+   <input id="myTextbox" type="text" />
+   <input type="button" value="start" 
+          onclick="assignC(); alert(A); alert(B); "/>
+   <script>alert(2);</script>
+</body></html>

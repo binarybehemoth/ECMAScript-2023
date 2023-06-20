@@ -1,0 +1,15 @@
+<!DOCTYPE html><html><body>
+<script type="module">
+    import {a,b,aa,aa as aaa, f, cl} from "./module.js";
+    import * as X from "./module.js";
+    console.log(a,       // 10
+                b,       // 30
+                aa,      // 10
+                aaa,     // 10
+                X.aa,    // 10
+                X.aaa ,  // undefined
+                f(),     // 20
+                cl,      // class cl{}
+                X.c);    // 40  
+</script>
+</body></html>
