@@ -1,0 +1,45 @@
+<!DOCTYPE html><html><body><script>
+var d = new Date('05-31-1999');;
+
+var l10nEN = new Intl.DateTimeFormat("en-US"); 
+var l10nDE = new Intl.DateTimeFormat("de-DE");
+console.log(l10nEN.format(d)); // 5/31/1999
+console.log(l10nDE.format(d)); // 31.5.1999
+
+console.log(new Intl.DateTimeFormat('en-GB').format(d));  // 31/05/1999
+console.log(new Intl.DateTimeFormat('ko-KR').format(d));   // 1999. 5. 31.
+console.log(new Intl.DateTimeFormat('ar-EG').format(d));   // ٣١‏/٥‏/١٩٩٩
+console.log(new Intl.DateTimeFormat(
+               'ja-JP-u-ca-japanese').format(d)); // 平成11/5/31
+console.log(new Intl.DateTimeFormat([
+               'ban', 'id']).format(d)); // 31/5/1999
+
+var options = { weekday: 'long', year: 'numeric', 
+                       month: 'long', day: 'numeric' };
+console.log(new Intl.DateTimeFormat(
+         'de-DE', options).format(d)); // Montag, 31. Mai 1999
+
+options.timeZone = 'UTC';
+options.timeZoneName = 'short';
+console.log(new Intl.DateTimeFormat('en-US', options).formatToParts(d)); 
+// [Object, Object, Object, Object, Object, Object, Object, 
+//  Object, Object]
+
+console.log(new Intl.DateTimeFormat().resolvedOptions()); 
+/* Object {locale: "en-GB", numberingSystem: "latn", calendar: "gregory", timeZone: "Asia/Kuala_Lumpur", year: "numeric"...} */
+
+options = {
+   hour: 'numeric', minute: 'numeric', second: 'numeric',
+   timeZoneName: 'short'
+};
+console.log(new Intl.DateTimeFormat('en-AU', options).format(d));   // 12:00:00 am GMT+8
+
+options = {
+   year: 'numeric', month: 'numeric', day: 'numeric',
+   hour: 'numeric', minute: 'numeric', second: 'numeric',
+   hour12: false
+};
+console.log(d.toLocaleString('en-US', options));  
+// 5/31/1999, 00:00:00
+
+</script></body></html>

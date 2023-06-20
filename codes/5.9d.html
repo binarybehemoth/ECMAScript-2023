@@ -1,0 +1,23 @@
+<!DOCTYPE html><html><head></head><body><script>
+function loadImage(file){
+   return new Promise((resolve,reject)=>{
+      var img = new Image();
+      img.onload = function(){resolve(img);}
+      img.onerror= function(){reject(file);}
+      img.src=file;
+   });
+}
+function timeLimit(seconds){
+   return new Promise((resolve,reject)=>{ 
+                     setTimeout(()=>{reject(null);},seconds); });
+}
+var images=['image1.png','image2.jpg','image3.png'];
+Promise.race([
+   Promise.all(images.map(loadImage)),
+   timeLimit(10000)])
+.then(a=>{
+   for (v of a) document.body.append(v);
+}, b=>{
+   document.write('images are too large');
+});
+</script></body></html>

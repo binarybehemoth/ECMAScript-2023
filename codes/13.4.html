@@ -1,0 +1,9 @@
+<!DOCTYPE html><html><head></head><body><script>
+   var arr = new SharedArrayBuffer(256);
+   new Int16Array(arr)[0]=0;
+   var workers=[];
+   for (let i=0; i<1000; i++) 
+      workers.push(new Worker('worker.js'));
+   workers.forEach(
+       w => w.postMessage(new Int16Array(arr)));
+</script></body></html>

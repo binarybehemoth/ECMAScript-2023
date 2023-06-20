@@ -1,0 +1,5 @@
+   console.log(0b001 === 1);  // true  (binary)
+   console.log(0o10 + 1);   // 9  (octal)
+   console.log(010);  // 8   (octal)
+   console.log(0xff);  // 255   (hex)
+   console.log((0xff).toString(16));  // ff   (hex)

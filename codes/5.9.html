@@ -1,0 +1,13 @@
+<!DOCTYPE html><html><body>
+<dialog open>
+   <input id="msg"/>
+   <button onclick="resolve(document.querySelector('#msg').value)">
+       DONE
+   </button>
+</dialog>
+<script>
+   let resolve;
+   new Promise(r=>{
+      resolve = r;
+   }).then(v=>alert(v));
+</script></body></html>

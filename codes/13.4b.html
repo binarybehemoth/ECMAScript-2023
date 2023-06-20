@@ -1,0 +1,10 @@
+<!DOCTYPE html><html><body><script>
+const worker = new Worker('worker2.js');
+const SBUF = new SharedArrayBuffer(
+      10 * Int32Array.BYTES_PER_ELEMENT); // 10 elements
+worker.postMessage({SBUF}); // clone
+const sa = new Int32Array(SBUF);
+console.log('notifying...');
+Atomics.store(sa, 0, 123);
+Atomics.wake(sa, 0, 1);
+</script></body></html>
